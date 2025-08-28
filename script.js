@@ -1,4 +1,4 @@
-// Mock data
+//mock data
 const products = [
   {
     id: 1,
@@ -81,12 +81,12 @@ const categories = [
   { name: "Acessórios", count: 156, image: "assets/images/tech-accessories-category.png" },
 ]
 
-// State
+//state
 let cartItems = []
 let searchQuery = ""
 let selectedCategory = "Todos"
 
-// DOM Elements
+//DOM elements
 const cartBtn = document.getElementById("cartBtn")
 const cartSidebar = document.getElementById("cartSidebar")
 const cartOverlay = document.getElementById("cartOverlay")
@@ -103,7 +103,7 @@ const productsGrid = document.getElementById("productsGrid")
 const categoryFilters = document.getElementById("categoryFilters")
 const productsTitle = document.getElementById("productsTitle")
 
-// Initialize
+//inicializar
 document.addEventListener("DOMContentLoaded", () => {
   renderCategories()
   renderCategoryFilters()
@@ -111,18 +111,18 @@ document.addEventListener("DOMContentLoaded", () => {
   setupEventListeners()
 })
 
-// Event Listeners
+//event listeners
 function setupEventListeners() {
-  // Cart sidebar
+  //cart sidebar
   cartBtn.addEventListener("click", openCart)
   cartClose.addEventListener("click", closeCart)
   cartOverlay.addEventListener("click", closeCart)
 
-  // Search
+  //search
   searchInput.addEventListener("input", handleSearch)
   mobileSearchInput.addEventListener("input", handleSearch)
 
-  // Sync search inputs
+  //sync search inputs
   searchInput.addEventListener("input", () => {
     mobileSearchInput.value = searchInput.value
   })
@@ -131,7 +131,7 @@ function setupEventListeners() {
   })
 }
 
-// Cart Functions
+//cart functions
 function openCart() {
   cartSidebar.classList.add("open")
   cartOverlay.classList.add("open")
@@ -194,14 +194,14 @@ function updateCartUI() {
   const totalItems = getTotalItems()
   const total = getTotalPrice()
 
-  // Update badge
+  //update badge
   cartBadge.textContent = totalItems
   cartBadge.style.display = totalItems > 0 ? "flex" : "none"
 
-  // Update subtitle
+  //update subtitle
   cartSubtitle.textContent = `${totalItems} ${totalItems === 1 ? "item" : "itens"} no carrinho`
 
-  // Update content
+  //update content
   if (cartItems.length === 0) {
     cartContent.innerHTML = '<p class="cart-empty">Seu carrinho está vazio</p>'
     cartFooter.style.display = "none"
@@ -230,13 +230,13 @@ function updateCartUI() {
   }
 }
 
-// Search Functions
+//search function
 function handleSearch(e) {
   searchQuery = e.target.value
   renderProducts()
 }
 
-// Filter Functions
+//ilter functions
 function setCategory(category) {
   selectedCategory = category
   productsTitle.textContent = category === "Todos" ? "Produtos" : category
@@ -255,7 +255,7 @@ function updateCategoryFilters() {
   })
 }
 
-// Render Functions
+//render
 function renderCategories() {
   categoriesGrid.innerHTML = categories
     .map(
